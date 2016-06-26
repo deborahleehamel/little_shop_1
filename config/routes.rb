@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   get "/users/new", to: "users#new", as: "new_user"
   post "/users", to: "users#create", as: "users"
 
-  resources :cart_items, only: [:create, :destroy, :update, :edit]
+  # resources :cart_items, only: [:create, :destroy, :update, :edit]
+  post "/cart_items", to: "cart_items#create"
+  delete "/cart_items/:id", to: "cart_items#destroy"
+  patch "/cart_items/:id", to: "cart_items#update", as: "cart_item"
+  get "cart_items/:id/edit", to: "cart_items#edit", as: "edit_cart_item"
+
   resources :orders, only: [:index, :create]
 
   namespace "admin" do
