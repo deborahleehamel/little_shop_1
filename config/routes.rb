@@ -2,7 +2,10 @@ Rails.application.routes.draw do
 
   root to: "pages#splash"
 
-  resources :items, only: [:index, :show]
+  # resources :items, only: [:index, :show]
+  get "/items", to: "items#index"
+  get "/items/:id", to: "items#show", as: "item"
+
   resources :users, only: [:new, :create]
   resources :cart_items, only: [:create, :destroy, :update, :edit]
   resources :orders, only: [:index, :create]
