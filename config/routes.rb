@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   patch "/cart_items/:id", to: "cart_items#update", as: "cart_item"
   get "cart_items/:id/edit", to: "cart_items#edit", as: "edit_cart_item"
 
-  resources :orders, only: [:index, :create]
+  # resources :orders, only: [:index, :create]
+  get "/orders", to: "orders#index", as: "orders"
+  post "/orders", to: "orders#create"
+
 
   namespace "admin" do
     resources :items
