@@ -20,11 +20,18 @@ Rails.application.routes.draw do
   get "/orders", to: "orders#index", as: "orders"
   post "/orders", to: "orders#create"
 
-
-  namespace "admin" do
-    resources :items
-    resources :users, only: [:show]
-  end
+  # namespace "admin" do
+  #   resources :items
+  #   resources :users, only: [:show]
+  # end
+  get "/admin/items", to: "admin/items#index", as: "admin_items"
+  post "/admin/items", to: "admin/items#create"
+  get "/admin/items/new", to: "admin/items#new", as: "new_admin_item"
+  get "/admin/items/:id/edit", to: "admin/items#edit", as: "edit_admin_item"
+  get "/admin/items/:id", to: "admin/items#show", as: "admin_item"
+  patch "/admin/items/:id", to: "admin/items#update"
+  delete "/admin/items/:id", to: "admin/items#destroy"
+  get "/admin/users/:id", to: "admin/users#show", as: "admin_user"
 
   get "/order", to: "orders#show"
   get "/dashboard", to: "users#show"
