@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   get "/items", to: "items#index"
   get "/items/:id", to: "items#show", as: "item"
 
-  resources :users, only: [:new, :create]
+  # resources :users, only: [:new, :create]
+  get "/users/new", to: "users#new", as: "new_user"
+  post "/users", to: "users#create", as: "users"
+
   resources :cart_items, only: [:create, :destroy, :update, :edit]
   resources :orders, only: [:index, :create]
 
